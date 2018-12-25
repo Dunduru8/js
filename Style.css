@@ -76,7 +76,6 @@ div {
     border-radius: 15px;
     text-align: center;
     line-height: 25px;
-    margin-top: 120px;
 }
 .buttonBuy:hover{
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);

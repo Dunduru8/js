@@ -39,7 +39,7 @@ var product = [
 }
 ]
     
- var cart = [];
+ var cart = [];  //переменная для массива корзины
 
 // Создание каталога
 
@@ -50,16 +50,6 @@ function catalogCreation(catalog){
      $catalogItem.classList.toggle("item");
      $catalogItem.innerHTML = catalog[i].Name;
      $catalogContent.appendChild($catalogItem);
-     
-     //var $itemName = document.createElement("div");
-     //$itemName.className = "itemName";
-     //$itemName.textContent = "Название товара : ";
-     //$catalogItem.appendChild($itemName);
-     
-    // var $itemId = document.createElement("div");
-     //$itemId.className = "itemId";
-    // $itemId.innerHTML = catalog[i].Name;
-    // $itemName.appendChild($itemId);
      
      var $itemPrice = document.createElement("div");
      $itemPrice.className = "itemProp";
@@ -76,11 +66,12 @@ function catalogCreation(catalog){
      $itemAvail.textContent = "Есть " + catalog[i].availability; 
      $catalogItem.appendChild($itemAvail);
      
-     var $buttonBuy = document.createElement("a");
+     var $buttonBuy = document.createElement("div");
      $buttonBuy.className = "buttonBuy";
      $buttonBuy.textContent = "Купить"; 
-     $buttonBuy.href = catalog[i].Name;
+     $buttonBuy.id = catalog[i].Name;
      $catalogItem.appendChild($buttonBuy);
+     
      
     }
     return $catalogContent;
@@ -88,20 +79,22 @@ function catalogCreation(catalog){
 };
 catalogCreation(product);
 
-var a = document.getElementsByClassName("buttonBuy");
-debugger;
-        var objInCart = {};
-     [].forEach.call(a, function(el){
-    a.click = function(el){
-    for( var i = 0; i < product.length; i++){
-        var id = product[i].Name;
-        var idTempor = this.href;
-        if ( id == idTempor){
-          objInCart = product[i];
-          cart.push(objInCart);
+for( var i = 0; i < product.length; i++){
+   var $idCreator = product[i].Name; 
+   var $buttonBuy = document.getElementById($idCreator);
+   var objInCart = {};
+   $buttonBuy.addEventListener("click", function(){
+     [].forEach.call($buttonBuy, function(el){
+        $buttonBuy.click = function(el){
+           for( var i = 0; i < product.length; i++){
+               var id = product[i].Name;
+               var idTempor = this.id;
+                   if ( id == idTempor){
+                    objInCart = product[i];
+                    cart.push(objInCart);
+                    }
+           }
         }
-    }
-        event.preventDefault();
-    }
-   })                    
-
+      })
+    })
+};  
