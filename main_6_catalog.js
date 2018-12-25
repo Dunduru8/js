@@ -45,8 +45,8 @@ var product = [
 }
 ];
 
-    
- var cart = [];
+
+var cart = []; //переменная для корзины
 
 // Создание каталога
 
@@ -110,7 +110,7 @@ function cartSumm(){
      var temporItemPrice = cart[i]["Price"] * cart[i]["Quant"];
      cartPrice += temporItemPrice;
   }
-  return cartPrice;    
+  return cartPrice.toFixed(2);    
 }  //Подсчет общей суммы корзины
 
 function cartItem(){
@@ -127,15 +127,9 @@ function cartDivCreation(){
      var $cartContent = document.getElementById("cart");
      $cartContent.innerHTML = "Корзина пуста";   
    }else{
-       $cartContent = ["В корзине", cartItem(), "товаров", "на сумму", cartSumm(), "eur"]    
-       for(var i=0; i < $cartContent.length; i++){ 
-          var $cartDiv = document.createElement("div");  
-          $cartDiv.innerHTML = $cartContent[i];
-          $cartDiv.className = "cartDiv";
-          document.getElementById("cart").appendChild($cartDiv);     
-        }       
+       $cartContent = "В корзине " + cartItem() + " товаров " + " на сумму " + cartSumm() + " eur ";    
+       document.getElementById("cart").innerHTML = $cartContent; 
     }
-     return $cartContent;
+    return $cartContent;
 }
-
 cartDivCreation();
