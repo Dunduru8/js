@@ -9,10 +9,12 @@ div {
     float:left;
 }
 #cart { 
-    width: auto;    
-    position: absolute;
-    margin-top: 320px;
-    margin-left: 30px;    
+    width: auto;
+    line-height: 25px;
+    background-color: lightgray;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 5px;
 }
 .cartDiv {
     width: auto;    
@@ -44,6 +46,9 @@ div {
     border: 1px solid black; 
     
 }
+.img{
+    display: flex:
+}
 .itemName{
     width: 230px;
     height: 35px;
@@ -69,13 +74,11 @@ div {
     display: block;
     text-decoration: none;
     width: 100px;
-    height: 25px;
     background-color: lavender;
     font-size: 18px;
     padding: 5px;
     border-radius: 15px;
     text-align: center;
-    line-height: 25px;
 }
 .buttonBuy:hover{
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
