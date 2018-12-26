@@ -10,7 +10,7 @@ div {
 #cart { 
     width: auto;
     height: 20px;
-    line-height: 30px;
+    line-height: 20px;
     background-color: lightgray;
     margin-top: 50px;
     border-radius: 20px;
@@ -32,8 +32,6 @@ div {
     display: block;
     width: 250px;
     height: 200px;
-    font-size: 18px;
-    font-weight: 600;
     margin-bottom: 15px;
     padding-left: 20px;
     padding-top: 20px;
@@ -42,20 +40,27 @@ div {
 .img{
     display: flex;
     float: right;
+    position: absolute;
+}
+.imageDiv{
+    width: 70px;
+    height: 70px;
+    float: right;
+    margin-right: 20px;
+}
+.link{
+    display: block;
+    width:100%;
+    height: 100%;
+    position: relative;
+    
 }
 .itemName{
-    width: 230px;
+    width: 100px;
     height: 35px;
-    font-size: 16px;
-    float:left;
-    display: flex;
-}
-.itemId{
-    width: 120px;
-    height:30px;
     font-size: 18px;
     font-weight: 600;
-    margin-left: 20px;
+    display: flex;
 }
 .itemProp{
     width: 200px;
@@ -65,7 +70,6 @@ div {
     font-weight: 400;
 }
 .buttonBuy {
-    display: block;
     text-decoration: none;
     width: 100px;
     background-color: lavender;

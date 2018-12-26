@@ -44,6 +44,26 @@ var product = [
     Quant: 1,
 }
 ];
+var img = [
+    {thumb: "img/Product_1_small.jpg",
+     original: "img/Product_1.jpg",
+    },
+    {thumb: "img/Product_2_small.jpg",
+     original: "img/Product_2.jpg"    
+    },
+    {thumb: "img/Product_3_small.jpg",
+     original: "img/Product_3.jpg",
+    },
+    {thumb: "img/Product_4_small.jpg",
+     original: "img/Product_4.jpg",   
+    },
+    {thumb: "img/Product_5_small.jpg",
+     original: "img/Product_5.jpg",
+    },
+    {thumb: "img/Product_6_small.jpg",
+     original: "img/Product_6.jpg",
+    }
+];
 
 
 var cart = []; //переменная для корзины
@@ -58,8 +78,28 @@ function catalogCreation(catalog){
 for(var i=0; i < catalog.length; i++){ 
      var $catalogItem = document.createElement("div");
      $catalogItem.classList.toggle("item");
-     $catalogItem.innerHTML = catalog[i].Name;
-     $catalogContent.appendChild($catalogItem);
+     document.getElementById("catalog").appendChild($catalogItem);
+     
+     var $imgDiv = document.createElement("div");
+     $imgDiv.className = "imageDiv";
+     $catalogItem.appendChild($imgDiv);
+    
+     var $link = document.createElement("a");
+     $link.className = "link";
+     $link.id = i;
+     $link.href = img[i].original;
+     $imgDiv.appendChild($link);
+    
+     var $itemImg = document.createElement("img");
+     $itemImg.className = "img";
+     $itemImg.name = "small"
+     $itemImg.src = img[i].thumb;
+     $link.appendChild($itemImg);
+
+     var $itemName = document.createElement("div");
+     $itemName.className = "itemName";
+     $itemName.textContent = catalog[i].Name;
+     $catalogItem.appendChild($itemName);
      
      var $itemPrice = document.createElement("div");
      $itemPrice.className = "itemProp";
@@ -100,7 +140,27 @@ document.body.addEventListener("click", function(Event){
             console.log("click", event.target.id, cart);
           }
         }
-    };
+    }else if (event.target.nodeName == "IMG") {
+       var imgChange = document.getElementById(event.target.parentNode.id); 
+       var srcChange = event.target.name;    
+       var New = event.target.parentNode.id;
+       var imgBig = img[New].original;
+       var imgSmall = img[New].thumb;
+       var imgNew = document.createElement("img"); 
+         if(srcChange == "small"){
+            imgChange.innerHTML = "";
+            imgNew.src = imgBig; 
+            imgNew.name = "big";  
+         }else if(srcChange == "big"){
+             imgChange.innerHTML = "";
+             imgNew.src = imgSmall;
+             imgNew.name = "small";
+         }
+       
+       imgChange.appendChild(imgNew); 
+       
+       event.preventDefault();   
+    }
     cartDivCreation(); 
 });
 
